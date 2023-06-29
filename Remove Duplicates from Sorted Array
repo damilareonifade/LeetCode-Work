@@ -1,0 +1,17 @@
+I figured out two ways of doing this one is by using the two pointer technique and the other is by using set
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        k = 1 #set a pointer to use to track former index from back
+        for i in range(1,len(nums)):
+            if nums[i] != nums[k-1]: #if nums is unique and the number behind is not the same as the number in the front
+                nums[k] = nums[i] # change the position and move +1 forward so nums[k] has moved an index
+                k += 1
+        
+        return k
+
+# using set to get the unique numbers using sorted to sort the numbers to an array in order and get the length
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        nums[:] = list(sorted(set(nums)))
+        return len(nums)
